@@ -2,13 +2,13 @@
   height: 100%;
 }
 
+h1 {
+  margin-left: 2em;
+}
+
 .sidenav {
   width: 200px;
   background: inherit;
-}
-
-.mat-toolbar-row {
-  margin-left: 30px;
 }
 
 .mat-toolbar.mat-primary {
