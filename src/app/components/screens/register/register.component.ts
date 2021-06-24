@@ -62,19 +62,19 @@ export class RegisterComponent  implements OnInit {
   }
 
   onSubmit() {
-    // const newUser = {
-    //   firstName: this.firstName,
-    //   lastName: this.lastName,
-    //   email: this.email,
-    //   password: this.password,
-    //   confirmPassword: this.confirmPassword,
-    //   contactNo: this.contactNo
-    // }
+
     if(this.userForm?.invalid) {
       this.userForm.setErrors({ ...this.userForm.errors, "formError": true });
       return;
     }
-    console.log("ggwp");
-  }
 
+    const newUser = {
+      firstName: this.firstName?.value,
+      lastName: this.lastName?.value,
+      email: this.email?.value,
+      password: this.password?.value,
+      contactNo: this.contactNo?.value
+    }
+    console.log(newUser);
+  }
 }
