@@ -2,6 +2,8 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
 
 import { AngularMaterialModule } from './angular-material.module';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -13,6 +15,7 @@ import { CarParkComponent } from './components/screens/car-park/car-park.compone
 import { HomeComponent } from './components/screens/home/home.component';
 import { FooterComponent } from './components/layouts/footer/footer.component';
 import { NotFoundComponent } from './components/screens/not-found/not-found.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -40,6 +43,9 @@ const appRoutes: Routes = [
     NoopAnimationsModule,
     AngularMaterialModule,
     LayoutModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
