@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 import { UserService } from 'src/app/services/user.service';
+import { Utility } from 'src/app/utility';
 
 @Component({
   selector: 'app-login',
@@ -31,9 +32,15 @@ export class LoginComponent implements OnInit {
     
     this._userService.login(loginInfo).subscribe(
       data => {
-        //Save Token to localStorage
+        const util  = new Utility();
+        if(data.token) {
+          util.saveToken(data.token);
+          //this._router.navigateByUrl("/check-car-park");
+        } else {
+          throw new Error();
+        }
         this.showLoader = false;
-        this._router.navigateByUrl("/check-car-park");
+        console.log(data);
       },
       error => {
         console.error("Error!", error)
@@ -43,7 +50,5 @@ export class LoginComponent implements OnInit {
         this.showLoader = false;
       }
     )
-
-    
   }
 }
