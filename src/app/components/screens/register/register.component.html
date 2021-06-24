@@ -1,10 +1,13 @@
+
+
 <form class="form-container form-card" (ngSubmit)="onSubmit()" [formGroup]="userForm">
-    <h1>REGISTER</h1>
+    <h1>REGISTER</h1> 
     <div>
         <mat-form-field>
                 <input type="text" matInput 
                     placeholder="Firstname"
                     formControlName="firstName"
+                    disable
                    />
                 <mat-error *ngIf="firstName.hasError('minlength') &&
                     !firstName.hasError('required')">Firstname must be at least 2 characters long.</mat-error>
@@ -77,6 +80,7 @@
         </mat-form-field>
     </div>
     <div>
-        <button type="submit" mat-stroked-button color="primary">SIGN-ME-UP</button>
+        <button *ngIf="!showLoader" type="submit" mat-stroked-button color="primary">SIGN-ME-UP</button>
+        <mat-spinner *ngIf="showLoader" diameter="50"></mat-spinner>
     </div>
 </form>

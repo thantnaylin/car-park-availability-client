@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { User } from 'src/app/models/User';
 import { UserForm } from 'src/app/models/UserForm';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -11,8 +15,9 @@ export class RegisterComponent  implements OnInit {
 
   userForm : FormGroup | undefined;
   user: UserForm | undefined;
+  showLoader: boolean = false;
 
-  constructor() { }
+  constructor(private _userService : UserService, private _router: Router, private _snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.userForm = new FormGroup({
@@ -73,8 +78,25 @@ export class RegisterComponent  implements OnInit {
       lastName: this.lastName?.value,
       email: this.email?.value,
       password: this.password?.value,
-      contactNo: this.contactNo?.value
+      contactNumber: this.contactNo?.value
     }
-    console.log(newUser);
+
+    this.showLoader = true;
+    this._userService.addUser(newUser)
+      .subscribe(
+        data => {
+          alert("Successfully created!");
+          this.showLoader = false;
+          this._router.navigateByUrl("/login");
+        },
+
+        error => {
+          console.error("Error!", error)
+          this._snackbar.open(error.error.message || "Something went wrong", "Close", {
+            verticalPosition: "top"
+          });
+          this.showLoader = false;
+        }
+      )
   }
 }

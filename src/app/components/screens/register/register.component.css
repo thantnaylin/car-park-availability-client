@@ -43,3 +43,7 @@ mat-form-field {
 mat-error {
   font-size: small;
 }
+
+mat-spinner {
+  margin: 0 auto;
+}
