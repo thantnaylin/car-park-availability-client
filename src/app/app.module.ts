@@ -12,13 +12,16 @@ import { RegisterComponent } from './components/screens/register/register.compon
 import { CarParkComponent } from './components/screens/car-park/car-park.component';
 import { HomeComponent } from './components/screens/home/home.component';
 import { FooterComponent } from './components/layouts/footer/footer.component';
+import { NotFoundComponent } from './components/screens/not-found/not-found.component';
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginComponent },
   { path: "check-car-park", component: CarParkComponent },
-  //Add not found component here
+  //Route not found
+  { path: "404", component: NotFoundComponent },
+  { path: "**", redirectTo: "/404" }
 ]
 
 @NgModule({
@@ -29,7 +32,8 @@ const appRoutes: Routes = [
     RegisterComponent,
     CarParkComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
