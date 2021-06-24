@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Observable, throwError } from 'rxjs';
-import { User } from "../models/User";
 import { catchError } from 'rxjs/operators';
+
+import { User } from "../models/User";
+import { Login } from '../models/Login';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -14,7 +16,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = "https://localhost:44358/api";
+  private _apiUrl = "https://localhost:44358/api";
 
   constructor(private http: HttpClient) { }
 
@@ -28,10 +30,16 @@ export class UserService {
   }
 
   addUser(user: User): Observable<User> {
-    console.log("Hi from the service");
-
     return this.http.post<User>
-      (this.apiUrl + "/users", user, httpOptions)
+      (`${this._apiUrl}/users`, user, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
+  
+  login(login: Login): Observable<Login> {
+    return this.http.post<Login>
+      (`${this._apiUrl}/users/login`, login, httpOptions)
       .pipe(
         catchError(this.handleError)
       )

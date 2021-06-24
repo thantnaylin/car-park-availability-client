@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +11,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  showLoader: boolean = false;
+  email: string = "";
+  password: string = "";
+
+  constructor(private _userService : UserService, private _router : Router, private _snackbar : MatSnackBar) { }
 
   ngOnInit(): void {
   }
 
+  onSubmit() {
+
+    this.showLoader = true;
+
+    const loginInfo = {
+      email: this.email,
+      password: this.password
+    }
+    
+    this._userService.login(loginInfo).subscribe(
+      data => {
+        //Save Token to localStorage
+        this.showLoader = false;
+        this._router.navigateByUrl("/check-car-park");
+      },
+      error => {
+        console.error("Error!", error)
+        this._snackbar.open(error.error.message || "Cannot login right now.", "Close", {
+          verticalPosition: "top"
+        });
+        this.showLoader = false;
+      }
+    )
+
+    
+  }
 }
