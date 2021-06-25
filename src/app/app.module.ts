@@ -17,6 +17,7 @@ import { FooterComponent } from './components/layouts/footer/footer.component';
 import { NotFoundComponent } from './components/screens/not-found/not-found.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './components/profile/profile.component';
+import { CarParkTableComponent } from './components/car-park-table/car-park-table.component';
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
     HomeComponent,
     FooterComponent,
     NotFoundComponent,
-    ProfileComponent
+    ProfileComponent,
+    CarParkTableComponent
   ],
   imports: [
     BrowserModule,

@@ -1,14 +1,15 @@
 <div class="container">
     <ng-container
-        *ngIf="showLoader; then loader; else profile"
+        *ngIf="showLoader; then loader; else data"
     ></ng-container>
 
     <ng-template #loader>
         <mat-spinner diameter="50"></mat-spinner>
     </ng-template>
 
-    <ng-template #profile>
+    <ng-template #data>
         <app-profile [user]="user"></app-profile>
+        <app-car-park-table></app-car-park-table>
     </ng-template>
 </div>
 

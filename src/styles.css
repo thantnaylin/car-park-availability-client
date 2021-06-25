@@ -17,4 +17,7 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin-bottom: 100px;
+  clear: both;
+  min-height: 400px;
 }
