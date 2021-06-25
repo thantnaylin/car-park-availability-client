@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+import { API_STRING } from "../../constants";
 import { User } from "../models/User";
 import { Login } from '../models/Login';
 import { Utility } from '../utility';
@@ -21,7 +22,7 @@ export class UserService {
 
   @Output() triggerIsLoggedIn: EventEmitter<any> = new EventEmitter();
 
-  private _apiUrl = "https://localhost:44358/api";
+  private _apiUrl = API_STRING;
 
   constructor(private http: HttpClient, private _router: Router) { }
 

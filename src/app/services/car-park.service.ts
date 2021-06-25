@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CarParkAvailability } from '../models/CarParkAvailability';
 import { Utility } from '../utility';
+import { API_STRING } from "../../constants";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarParkService {
 
-  private _apiUrl = "https://localhost:44358/api";
+  private _apiUrl = API_STRING;
   
   constructor(private http: HttpClient) { }
 
