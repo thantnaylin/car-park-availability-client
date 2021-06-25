@@ -3,8 +3,9 @@
     <a routerLink="" class="brand-logo">Car Park Availability</a>
     <span class="example-spacer">
       <a mat-button routerLink="/check-car-park">Check Availability</a>
-      <a mat-button routerLink="/login">Sign-in</a>
-      <a mat-button routerLink="/register">Register</a>
+      <a mat-button routerLink="/login" *ngIf="!isLoggedIn">Sign-in</a>
+      <a mat-button (click)="onLogout()" *ngIf="isLoggedIn">Logout</a>
+      <!-- <a mat-button routerLink="/register">Register</a> -->
     </span>
   </mat-toolbar-row>
 </mat-toolbar>

@@ -29,13 +29,16 @@ export class LoginComponent implements OnInit {
       email: this.email,
       password: this.password
     }
-    
+   
     this._userService.login(loginInfo).subscribe(
       data => {
         const util  = new Utility();
         if(data.token) {
           util.saveToken(data.token);
-          //this._router.navigateByUrl("/check-car-park");
+
+          this._userService.triggerIsLoggedIn.emit(true);
+
+          this._router.navigateByUrl("/check-car-park");
         } else {
           throw new Error();
         }

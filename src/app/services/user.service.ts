@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
-import { Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { User } from "../models/User";
 import { Login } from '../models/Login';
+import { Utility } from '../utility';
+import { Router } from '@angular/router';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -16,9 +18,16 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class UserService {
+
+  @Output() triggerIsLoggedIn: EventEmitter<any> = new EventEmitter();
+
   private _apiUrl = "https://localhost:44358/api";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private _router: Router) { }
+
+  getEmitter() {
+    return this.triggerIsLoggedIn;
+  }
 
   private handleError(error: HttpErrorResponse) {
     if(error.status === 0) {
@@ -43,5 +52,14 @@ export class UserService {
       .pipe(
         catchError(this.handleError)
       )
+  }
+
+  // loginStatus() {
+  //   this.triggerIsLoggedIn.emit(status);
+  // }
+
+  logout() {
+    localStorage.removeItem("token");
+    this._router.navigateByUrl("/login");
   }
 }
