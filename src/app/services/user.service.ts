@@ -46,6 +46,22 @@ export class UserService {
       )
   }
   
+  getProfile(): Observable<User> {
+    const util = new Utility();
+    let token = util.getToken("token");
+    
+    let header = {
+      headers: new HttpHeaders()
+        .set("Authorization", `Bearer ${token}`)
+    };
+
+    return this.http.get<User>
+      (`${this._apiUrl}/users/profile`, header)
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
+
   login(login: Login): Observable<Login> {
     return this.http.post<Login>
       (`${this._apiUrl}/users/login`, login, httpOptions)
