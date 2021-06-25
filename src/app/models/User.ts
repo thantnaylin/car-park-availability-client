@@ -4,5 +4,5 @@ export interface User {
     lastName?: string;
     email?: string;
     password?: string;
-    ContactNumber?: string;
+    contactNumber?: string;
 }

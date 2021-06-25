@@ -1,9 +1,11 @@
 <div class="container">
     <div class="profile-badge">
-        BB
+        {{ user.firstName[0] + user.lastName[0] }}
     </div>
     <div class="name-container">
-        <p class="name">Benis Berlow</p>
-        <i>benberlow@neckdeep.uk</i>
+        <p class="name">{{ user.firstName + " " + user.lastName }}</p>
+        <span class="info-container"><mat-icon>email</mat-icon><i>{{user.email}}</i></span>
+        <br />
+        <span *ngIf="user.contactNumber" class="info-container"><mat-icon>phone</mat-icon><i>{{user.contactNumber}}</i></span>
     </div>
 </div>

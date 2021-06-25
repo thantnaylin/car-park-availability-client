@@ -1,4 +1,14 @@
 <div class="container">
-    <app-profile></app-profile>
+    <ng-container
+        *ngIf="showLoader; then loader; else profile"
+    ></ng-container>
+
+    <ng-template #loader>
+        <mat-spinner diameter="50"></mat-spinner>
+    </ng-template>
+
+    <ng-template #profile>
+        <app-profile [user]="user"></app-profile>
+    </ng-template>
 </div>
 

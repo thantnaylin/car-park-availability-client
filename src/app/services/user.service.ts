@@ -70,10 +70,6 @@ export class UserService {
       )
   }
 
-  // loginStatus() {
-  //   this.triggerIsLoggedIn.emit(status);
-  // }
-
   logout() {
     localStorage.removeItem("token");
     this._router.navigateByUrl("/login");
