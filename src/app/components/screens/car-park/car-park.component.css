@@ -1,0 +1,16 @@
+.container {
+  background: #212121;
+  margin: 2rem 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 25%);
+  min-height: 30%;
+}
+
+/* mat-grid-tile {
+  background-color: #212121;
+  margin: 1rem !important;
+} */
+
+h2 {
+  color: #c2185b;
+}

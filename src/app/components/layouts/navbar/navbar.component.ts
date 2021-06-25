@@ -19,11 +19,9 @@ export class NavbarComponent implements OnInit {
 
     const util = new Utility();
     let token = util.getToken("token");
-    console.log(token);
     if(token) {
       this.isLoggedIn = true;
     } else {
-      //console.log("show login")
       this.isLoggedIn = false;
     }
 

@@ -1,0 +1,31 @@
+.container {
+  margin: 2rem 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 25%);
+  min-height: 30%;
+  background-color: #333333;
+  max-width: 20%;
+  color: #fffef7;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+}
+
+.profile-badge {
+  font: 300 44px/66px Roboto, roboto, "Helvetica Neue", sans-serif;
+  background-color: red;
+  background-image: linear-gradient(#eeaeca, #94bbe9);
+  border-radius: 100%;
+  width: 2.5em;
+  height: 2.5em;
+  line-height: 2.5em;
+  margin: auto;
+}
+
+.name-container {
+  margin: 1em 0;
+}
+
+.name {
+  font-size: 2em;
+}
