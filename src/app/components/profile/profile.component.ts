@@ -13,8 +13,6 @@ export class ProfileComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.user);
-    console.log(this.user?.contactNumber);
   }
 
 }

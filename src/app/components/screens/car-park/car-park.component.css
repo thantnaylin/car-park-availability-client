@@ -6,6 +6,10 @@
   min-height: 30%;
 }
 
+p {
+  color: #fff;
+}
+
 h2 {
   color: #c2185b;
 }
