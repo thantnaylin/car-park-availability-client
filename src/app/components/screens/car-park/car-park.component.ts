@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Utility } from 'src/app/utility';
+
 
 @Component({
   selector: 'app-car-park',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarParkComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
   ngOnInit(): void {
+    const util = new Utility();
+    if(!util.getToken("token")) {
+      this._router.navigateByUrl("/login");
+    }
   }
 
 }
